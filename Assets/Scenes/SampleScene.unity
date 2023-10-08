@@ -301,6 +301,11 @@ MonoBehaviour:
   prefabBullet: {fileID: 8884448749180828024, guid: 73e89f4117e461443b2320ed83f59edb, type: 3}
   speedBullet: 10
   lifetimeBullet: 1
+--- !u!4 &157089167 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 80884920002106835, guid: 740232c54b4983941833879c0d98001b, type: 3}
+  m_PrefabInstance: {fileID: 3287445623670570907}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -900,8 +905,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1393192646}
-  - component: {fileID: 1393192645}
   - component: {fileID: 1393192647}
+  - component: {fileID: 1393192648}
   m_Layer: 0
   m_Name: Ship
   m_TagString: Untagged
@@ -909,18 +914,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1393192645
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1393192644}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ec80c3b551128644beae4736b59a3bd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &1393192646
 Transform:
   m_ObjectHideFlags: 0
@@ -929,13 +922,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1393192644}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.967478, y: -0.9575801, z: -4.1491766}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 1.71, y: 0.05, z: -4.0487895}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 92008157}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 157089167}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1393192647
 MonoBehaviour:
@@ -963,7 +956,19 @@ MonoBehaviour:
       m_Calls: []
   m_ActionEvents:
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1393192648}
+        m_TargetAssemblyTypeName: ShipBehaviour, Assembly-CSharp
+        m_MethodName: Movements
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 6e1ec897-854f-4cf5-a383-3468a93213ff
     m_ActionName: Player/Move[/Keyboard/w,/Keyboard/upArrow,/Keyboard/s,/Keyboard/downArrow,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow]
   - m_PersistentCalls:
@@ -975,7 +980,7 @@ MonoBehaviour:
       - m_Target: {fileID: 144040363}
         m_TargetAssemblyTypeName: Shooter, Assembly-CSharp
         m_MethodName: Shoot
-        m_Mode: 1
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1026,11 +1031,31 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 297c9482-66f0-45e8-abec-d2687774e846
     m_ActionName: UI/TrackedDeviceOrientation
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 4888c716-01ac-4418-82a7-972f5288ee14
+    m_ActionName: Player/Interact[/Keyboard/e]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: Keyboard&Mouse
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 519420031}
+--- !u!114 &1393192648
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1393192644}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 433b755e6cd5dbe4ea9e23112f87adfb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _speedRotate: 30
+  maxSpeed: 150
+  inMovement: 0
+  movement: 0
 --- !u!1 &1429887473
 GameObject:
   m_ObjectHideFlags: 0
@@ -1332,6 +1357,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 80884920002106835, guid: 740232c54b4983941833879c0d98001b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3728287114432034027, guid: 740232c54b4983941833879c0d98001b, type: 3}
       propertyPath: m_Name
       value: Station
@@ -1376,21 +1405,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4972500032411685641, guid: 740232c54b4983941833879c0d98001b, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4972500032411685641, guid: 740232c54b4983941833879c0d98001b, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4972500032411685641, guid: 740232c54b4983941833879c0d98001b, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 80884920002106835, guid: 740232c54b4983941833879c0d98001b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1393192646}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 740232c54b4983941833879c0d98001b, type: 3}
 --- !u!1660057539 &9223372036854775807
@@ -1406,4 +1426,3 @@ SceneRoots:
   - {fileID: 1967845816}
   - {fileID: 2079687829}
   - {fileID: 3287445623670570907}
-  - {fileID: 1393192646}
