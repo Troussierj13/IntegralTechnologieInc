@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 472792385266435720}
   - component: {fileID: -4473072936306571505}
   m_Layer: 0
-  m_Name: Bullet
-  m_TagString: Bullet
+  m_Name: EnnemiBullet
+  m_TagString: EnnemiBullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -75,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: cb7bff6d18f84cf4bb1f015c3283bb42, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 132b1ebb6cb231545bee0d8d1a0e2486, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

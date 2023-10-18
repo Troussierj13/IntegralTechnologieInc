@@ -7,6 +7,7 @@ public class Bullet : MonoBehaviour
 {
     public float speed = 5.0f;
     public float lifetime = 1.0f;
+    public float damage = 25.0f;
 
     private void Start()
     {
@@ -16,6 +17,11 @@ public class Bullet : MonoBehaviour
     void Update()
     {
         transform.Translate(0.0f, speed * Time.deltaTime, 0.0f);
+    }
+
+    public void DestroyHimself()
+    {
+        Destroy(gameObject);
     }
 
     IEnumerator SelfDestroy(float lt)

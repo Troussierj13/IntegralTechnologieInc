@@ -19,16 +19,6 @@ public class ShipBehaviour : MonoBehaviour
         _playerInput = GetComponent<PlayerInput>();
     }
 
-    public void SnapToStation(StationBehaviour station)
-    {
-        transform.parent = station.transform;
-    }
-    
-    public void UnsnapToStation(StationBehaviour station)
-    {
-        transform.parent = null;
-    }
-
     public void Movements(InputAction.CallbackContext cc)
     {
         inMovement = cc.started || !cc.canceled;
@@ -45,16 +35,16 @@ public class ShipBehaviour : MonoBehaviour
         if (inMovement && transform.parent)
         {
             direction = _playerInput.actions["Move"].ReadValue<Vector2>().x;
-            if(Math.Abs(movement) < _speedRotate * Time.deltaTime)
-                movement += direction * _speedRotate * Time.deltaTime;
+            if(Math.Abs(movement) < maxSpeed * Time.deltaTime)
+                movement += direction * (float)Math.Log(_speedRotate) * Time.deltaTime;
             else
                 movement = direction * maxSpeed * Time.deltaTime;
 
             transform.parent.Rotate(0.0f, 0.0f, movement);
         }
-        else if(Math.Abs(movement) > _speedRotate) 
+        else if (Math.Abs(movement) > _speedRotate * Time.deltaTime)
         {
-            movement -= direction * _speedRotate * Time.deltaTime;
+            movement -= direction * (float)Math.Log(_speedRotate)/2 * Time.deltaTime;
             transform.parent.Rotate(0.0f, 0.0f, movement);
         }
         else
